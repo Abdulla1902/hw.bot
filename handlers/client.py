@@ -7,8 +7,9 @@ from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 # @dp.message_handler(commands=['start', 'help'])
 async def start_handler(message: types.Message):
-    await bot.send_message(message.from_user.id,
-                           f'Hello {message.from_user.full_name}')
+    await bot.send_message(message.chat.id,
+                           f'Привет {message.from_user.full_name}, чтобы внести свое блюдо в меню,'
+                           f'пропиши команду - \n"/menu"')
 
 
 #@dp.message_handler(commands=['quiz'])
