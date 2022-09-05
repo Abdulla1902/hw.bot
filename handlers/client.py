@@ -2,6 +2,8 @@ from aiogram import types, Dispatcher
 from config import bot
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from database.bot_db import sql_command_random
+from parsers.news import parser
+
 
 
 
@@ -17,7 +19,6 @@ async def quiz_1(message: types.Message):
     markup = InlineKeyboardMarkup()
     button_call_1 = InlineKeyboardButton('Next', callback_data='button_call_1')
     markup.add(button_call_1)
-
 
     question = 'Кто перзидент Кыргызстана?'
     otvety = [
@@ -51,7 +52,15 @@ async def pin(message: types.Message):
 async def show_random_user(message: types.Message):
     await sql_command_random(message)
 
-
+async def parser_news(message: types.Message):
+    data = parser()
+    for item in data:
+        await bot.send_message(
+            message.from_user.id,
+            f'{item["link"]}\n\n'
+            f'{item["title"]}\n'
+            f'{item["time"]}\n'
+        )
 
 
 def register_handlers_client(dp: Dispatcher):
@@ -59,3 +68,4 @@ def register_handlers_client(dp: Dispatcher):
     dp.register_message_handler(quiz_1, commands=['quiz'])
     dp.register_message_handler(pin, commands=['pin'], commands_prefix='!')
     dp.register_message_handler(show_random_user, commands='food')
+    dp.register_message_handler(parser_news, commands='news')
