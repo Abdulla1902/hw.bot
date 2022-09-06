@@ -1,6 +1,4 @@
 import logging
-
-
 from aiogram.utils import executor
 from config import dp
 from handlers import client, callback, extra, admin, fsm_resto, notification
