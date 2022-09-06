@@ -2,10 +2,11 @@ import logging
 
 
 from aiogram.utils import executor
-from config import dp, bot, config
+from config import dp, bot
 from handlers import client, callback, extra, admin, fsm_resto, notification, inline
 from database import bot_db
 import asyncio
+from decouple import config
 
 
 async def on_startup(_):
