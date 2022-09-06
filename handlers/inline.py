@@ -20,7 +20,7 @@ async def inline_wikipedia_handlers(query:types.InlineQuery):
             input_message_content=types.InputMessageContent(message_text=link)
         )
     ]
-    await query.answer(articles, cache_time=60, is_personal=True)
+    await query.answer(articles, cache_time=10, is_personal=True)
 
 
 def register_handler_inline(dp: Dispatcher):
