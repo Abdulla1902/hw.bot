@@ -1,7 +1,7 @@
 import logging
 from aiogram.utils import executor
 from config import dp
-from handlers import client, callback, extra, admin, fsm_resto, notification
+from handlers import client, callback, extra, admin, fsm_resto, notification, inline
 from database import bot_db
 import asyncio
 
@@ -11,6 +11,7 @@ async def on_startup(_):
     bot_db.sql_create()
 
 
+inline.register_handler_inline(dp)
 notification.register_handler_notification(dp)
 fsm_resto.register_handlers_fsmresto(dp)
 # fsm_anketa.register_handlers_fsmanketa(dp)
