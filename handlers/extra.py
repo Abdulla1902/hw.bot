@@ -17,7 +17,7 @@ async def mud(message: types.Message):
         pass
 
 
-def register_handlers_extra(dp: Dispatcher):
+def register_handler_extra(dp: Dispatcher):
     dp.register_message_handler(mud)
 
 
